@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+<title>BookList</title>
+<meta charset="utf-8">
+<link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico">
+<link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="all">
+<script src="js/jquery-1.7.2.min.js"></script>
+<!--[if lt IE 9]><script src="js/modernizr.custom.js"></script><![endif]-->
+<script src="js/jquery.flexslider-min.js"></script>
+<script src="js/functions.js"></script>
+</head>
+<body>
+<!-- wrapper -->
+<div id="wrapper">
+  <!-- header -->
+  <header>
+    <div class="shell">
+      <h1 id="logo"><a th:href="@{/main}">main</a></h1>
+      <nav id="topnavigation">
+      	<ul>
+      		<li>로그인</li>
+      		<li>회원가입</li>
+      		<li>마이페이지</li>
+      	</ul>
+      </nav>
+      <nav id="navigation">
+        <ul>
+          <li class="active"><a th:href="@{/getBookList(kind=best,type=0)}">베스트</a></li>
+          <li class="active"><a th:href="@{/getBookList(kind=new,type=0)}">신상품</a></li>
+         
+          <li><a href="#">이벤트</a></li>
+          <li><a href="#">고객센터</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <!-- end of header -->
+ 	<!-- main -->
+ 	
+ 	<section class="section">
+ 		<div>
+ 		<!-- 
+	 		<aside th:if="${#strings.toString(param.kind)} == 'best'" th:align="center">
+ 		 -->
+	 		<aside th:if="${#strings.equals(param.kind,'best')}" th:align="center">
+	 			<div>
+	 				<p class="category">베스트 셀러</p>
+	 			</div>
+	 			<div class="subMenu">
+		 			<div>
+		 				<a th:href="@{/getBookList(kind=best,type=0)}">전체</a>
+		 			</div>
+		 			<div>
+		 				<a th:href="@{/getBookList(kind=best,type=1)}">국내 도서</a>
+		 			</div>
+		 			<div>
+		 				<a th:href="@{/getBookList(kind=best,type=2)}">해외 도서</a>
+		 			</div>
+	 			</div>
+	 		</aside>
+	 		<aside th:if="${#strings.equals(param.kind,'new')}" th:align="center">
+	 			<div>
+	 				<p class="category">신상품</p>
+	 			</div>
+	 			<div class="subMenu">
+	 				<div>
+	 				<a th:href="@{/getBookList(kind=new,type=0)}">전체</a>
+	 				</div>
+	 				<div>
+	 				<a th:href="@{/getBookList(kind=new,type=1)}">국내 도서</a>
+	 				</div>
+	 				<div>
+	 				<a th:href="@{/getBookList(kind=new,type=2)}">해외 도서</a>
+	 				</div>
+	 			</div>
+	 		</aside>
+	 		
+ 	<div class="wrap22" th:align="center">
+	 	<ol>
+	 		<li th:each="book : ${bookList}" class="listbook">
+	 			<div class="horizontal"><!-- 리스트 틀 -->
+	 				<div class="bookimage"> <!-- 왼쪽 책 이미지 -->
+	 					<a th:href="@{/getBook(id=${book.id})}">이미지</a>
+	 				</div>
+	 				<div class="bookinfo"><!-- 오른쪽 책 정보 -->
+		 				<a th:href="@{/getBook(id=${book.id})}" th:text="${book.title}"></a>
+		 				<br>
+		 				<span>
+		 					<span th:text="${book.author}"></span>
+		 					<span th:text="${book.register_date}"></span>
+		 				</span>
+		 				<br>
+		 				<div>
+		 					<span th:text="${book.price}"></span>
+		 				</div>
+	 				</div>
+	 			</div>
+	 		</li>
+	 	</ol>
+ 		</div>
+ 	
+ 		</div>
+ 	</section>
+ 
+ 
+ 
+      
+</div>
+ 
+   
+<!-- footer -->
+<div id="footer">
+  <div class="footer-bottom">
+    <div class="shell">
+      <nav class="footer-nav left">
+        <ul>
+          <li class="active"><a href="#">HOME</a></li>
+          <li><a href="#">ABOUT US</a></li>
+          <li><a href="#">SERVICES</a></li>
+          <li><a href="#">SHOWCASE</a></li>
+          <li><a href="#">CAREERS</a></li>
+          <li><a href="#">CONTACT US</a></li>
+        </ul>
+      </nav>
+      <p class="copy right"> All Rights Reserved Copyright 2012 <a target="_blank" href="http://chocotemplates.com">ChocoTemplates</a></p>
+      <div class="cl">&nbsp;</div>
+    </div>
+  </div>
+</div>
+<!-- end of footer -->
+</body>
+</html>
