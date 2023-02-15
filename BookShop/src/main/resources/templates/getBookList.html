@@ -4,12 +4,7 @@
 <title>BookList</title>
 <meta charset="utf-8">
 <link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico">
-<link rel="stylesheet" href="css/style.css" type="text/css" media="all">
-<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="all">
-<script src="js/jquery-1.7.2.min.js"></script>
-<!--[if lt IE 9]><script src="js/modernizr.custom.js"></script><![endif]-->
-<script src="js/jquery.flexslider-min.js"></script>
-<script src="js/functions.js"></script>
+<link rel="stylesheet" href="css/listStyle.css" type="text/css" media="all">
 </head>
 <body>
 <!-- wrapper -->
@@ -27,20 +22,20 @@
       </nav>
       <nav id="navigation">
         <ul>
-          <li class="active"><a th:href="@{/getBookList(kind=best,type=0)}">베스트</a></li>
-          <li class="active"><a th:href="@{/getBookList(kind=new,type=0)}">신상품</a></li>
+          <li class="active"><a th:href="@{/getBookList(kind=best)}">베스트</a></li>
+          <li class="active"><a th:href="@{/getBookList(kind=new)}">신상품</a></li>
          
           <li><a href="#">이벤트</a></li>
           <li><a href="#">고객센터</a></li>
         </ul>
       </nav>
     </div>
+    
+    <br><hr>
   </header>
   <!-- end of header -->
  	<!-- main -->
  	
- 	<section class="section">
- 		<div>
  		<!-- 
 	 		<aside th:if="${#strings.toString(param.kind)} == 'best'" th:align="center">
  		 -->
@@ -50,7 +45,7 @@
 	 			</div>
 	 			<div class="subMenu">
 		 			<div>
-		 				<a th:href="@{/getBookList(kind=best,type=0)}">전체</a>
+		 				<a th:href="@{/getBookList(kind=best)}">전체</a>
 		 			</div>
 		 			<div>
 		 				<a th:href="@{/getBookList(kind=best,type=1)}">국내 도서</a>
@@ -66,7 +61,7 @@
 	 			</div>
 	 			<div class="subMenu">
 	 				<div>
-	 				<a th:href="@{/getBookList(kind=new,type=0)}">전체</a>
+	 				<a th:href="@{/getBookList(kind=new)}">전체</a>
 	 				</div>
 	 				<div>
 	 				<a th:href="@{/getBookList(kind=new,type=1)}">국내 도서</a>
@@ -77,44 +72,65 @@
 	 			</div>
 	 		</aside>
 	 		
- 	<div class="wrap22" th:align="center">
+ 	<section class="section">
+ 	<div class="content">
 	 	<ol>
-	 		<li th:each="book : ${bookList}" class="listbook">
+	 	<th:block th:each="book : ${bookList}">
+	 		<th:block th:if="${bookStat.count} <= 10">
+	 		<li class="listbook">
 	 			<div class="horizontal"><!-- 리스트 틀 -->
 	 				<div class="bookimage"> <!-- 왼쪽 책 이미지 -->
-	 					<a th:href="@{/getBook(id=${book.id})}">이미지</a>
+	 					<div class="imagesize">
+	 						<a th:href="@{/getBook(id=${book.id})}"><img th:src="@{'images/'+${book.image}}"></a>
+	 					</div>
 	 				</div>
 	 				<div class="bookinfo"><!-- 오른쪽 책 정보 -->
+		 				<div>
 		 				<a th:href="@{/getBook(id=${book.id})}" th:text="${book.title}"></a>
-		 				<br>
-		 				<span>
-		 					<span th:text="${book.author}"></span>
-		 					<span th:text="${book.register_date}"></span>
-		 				</span>
+		 				</div>
 		 				<br>
 		 				<div>
-		 					<span th:text="${book.price}"></span>
+		 					<span th:text="${book.author}"></span>
 		 				</div>
+		 				<div>
+		 					<span th:text="${book.publisher}"></span>
+		 					<span th:text="${#dates.format(book.publishing_date, 'yyyy-MM-dd')}"></span>
+		 				</div>
+		 				<br>
+		 				<div>
+		 					<span th:text="${book.price}+'원'"></span>
+		 				</div>
+	 				</div>
+	 				<div class="quantity"> <!-- 품절 여부 -->
+	 					<th:block th:if="${book.quantity} == 0">
+	 						<span>품절</span>
+	 					</th:block>
+	 				</div>
+	 				<div class="button"> <!-- 장바구니 구매 버튼 -->
+	 					<div>
+	 						<input type="submit" value="장바구니" onclick="alert('장바구니에 담겼습니다.')" class="btton">
+	 					</div>
+	 					<div>
+	 						<input type="submit" value="바로 구매" class="btton">
+	 					</div>
 	 				</div>
 	 			</div>
 	 		</li>
+	 		</th:block>
+	 	</th:block>
 	 	</ol>
  		</div>
- 	
- 		</div>
+ 		
  	</section>
- 
- 
- 
       
 </div>
  
    
 <!-- footer -->
+<footer>
 <div id="footer">
-  <div class="footer-bottom">
-    <div class="shell">
-      <nav class="footer-nav left">
+	<div class="footer_wrap">
+      <nav class="footer-nav">
         <ul>
           <li class="active"><a href="#">HOME</a></li>
           <li><a href="#">ABOUT US</a></li>
@@ -124,11 +140,10 @@
           <li><a href="#">CONTACT US</a></li>
         </ul>
       </nav>
-      <p class="copy right"> All Rights Reserved Copyright 2012 <a target="_blank" href="http://chocotemplates.com">ChocoTemplates</a></p>
-      <div class="cl">&nbsp;</div>
-    </div>
-  </div>
+      <p class="copy"> All Rights Reserved Copyright 2012 <a target="_blank" href="http://chocotemplates.com">ChocoTemplates</a></p>
+	</div>
 </div>
+</footer>
 <!-- end of footer -->
 </body>
 </html>

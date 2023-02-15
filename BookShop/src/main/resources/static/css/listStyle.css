@@ -1,0 +1,116 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+#wrapper {
+	width: 1200px; margin: 0 auto; height: auto;
+}
+
+header .shell { position: relative; width: 100%; margin: 0 auto; }
+#logo { position: absolute; top: 50px; left: 0; width: 211px; font-size: 0; line-height: 0;                   }
+#logo a { height: 36px; background: url(images/logo.png) no-repeat 0 0; display: block; text-indent: -4000px; }
+
+#topnavigation { text-align: right; font-size: 12px; padding-top: 10px;                                      }
+#topnavigation ul { list-style: none; list-style-position: outside; }
+#topnavigation ul li { display: inline; background: url(images/nav-border.png) no-repeat right 1px; padding: 0 11px 0 6px; }
+#topnavigation ul li.last { background: transparent; padding-right: 0; }
+#topnavigation li a { color: #c9c9c9; }
+#topnavigation li a:hover ,
+#topnavigation li.active a { color: #696969; text-decoration: none; font-size: 1.3em;}
+
+
+#navigation { text-align: right; font-size: 15px; padding-top: 40px;                                          }
+#navigation ul { list-style: none; list-style-position: outside;                                              }
+#navigation ul li { display: inline; background: url(images/nav-border.png) no-repeat right 1px; padding: 0 11px 0 6px; }
+#navigation ul li.last { background: transparent; padding-right: 0; }
+#navigation li a { color: #c9c9c9; }
+#navigation li a:hover ,
+#navigation li.active a { color: #696969; text-decoration: none;}
+
+
+aside {
+	width: 20%;
+	height: 3500px;
+	float: left;
+}
+
+aside div{
+	margin-top: 20px;
+}
+.category{
+	font-size: 30px;
+}
+
+.subMenu{
+	font-size: 20px; margin-top: 30px; text-decoration: none;
+}
+.subMenu div{
+	margin-top: 20px;
+}
+a{
+	text-decoration: none;
+}
+
+.section {
+	width: 80%;
+	height: 3500px;
+	float: left;
+	
+}
+.listbook{
+	list-style: none;
+}
+
+.horizontal{
+	width: 800px;
+	height: 260px;
+	 margin: 50px 80px;
+	   border-top: 1px solid;
+	   
+	    
+}
+.bookimage {
+	 width: 20%;   float: left; height: inherit;  
+}
+.imagesize{
+	padding: 15px 8px; border: thin solid;
+}
+img {
+	height: 190px; width: 140px;
+}
+.bookinfo {
+	 height: inherit;  float: left;width: 50%; font-size: 15px; text-align: left;   padding: 10px; 
+}
+
+.quantity{
+	  height: inherit;  float: left;width: 10%;  color: red; text-align: center; padding-top: 100px
+}
+	
+
+.button{
+	 height: inherit;  float: right;width:20%;   text-align: center;
+	 padding-top: 80px
+}
+
+.btton{
+    width: 110px;
+    height: 40px;
+}
+
+#footer { background-color: #f1ecec;  clear: both;height: 50px;font-size: 11px; width: 100%; margin: 0 auto;  }
+
+.footer_wrap {
+	width: 1200px; margin: 0 auto;}
+	
+
+
+.footer-nav {
+	float: left; display: inline;  margin-top: 15px}
+.footer-nav ul { list-style: none; list-style-position: outside; }
+.footer-nav ul li { display: inline; float:left; background: url(images/nav-border.png) no-repeat right 0; padding: 0 10px; }
+.footer-nav ul li.last { background: transparent; padding-right: 0; }
+.footer-nav li a { color: #c9c9c9; }
+.footer-nav li a:hover ,
+.footer-nav li.active a { color: #696969; text-decoration: none; }
+
+#footer p.copy { color: #c9c9c9;float: right;display: inline;   margin-top: 15px; padding: 0 10px;}
+#footer p.copy a { color: #afafaf; text-decoration: underline; }
+#footer p.copy a:hover { text-decoration: none; }

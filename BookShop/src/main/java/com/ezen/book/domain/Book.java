@@ -2,12 +2,14 @@ package com.ezen.book.domain;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -26,10 +28,11 @@ public class Book {
 	private int price;
 	private String author;
 	private String publisher;
+	@Column(length = 1000)
 	private String content;
 	private String image;
-	@Column(updatable = false)
-	private Date register_date = new Date();
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date publishing_date;
 	private int purchase;
 	private int quantity;
 	private int per_point;

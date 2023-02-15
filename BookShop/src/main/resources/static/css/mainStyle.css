@@ -1,11 +1,11 @@
 * { margin: 0; padding: 0; outline: 0; }
 
 .section{
-	margin: 0 auto; width: 80%; border-style: solid; overflow: auto;
+	margin: 0 auto; width: 90%; border-style: solid; 
 }
 
 aside{
-	width: 20%; border-style: solid; display: inline-block; float: left; display: flex; height: 100%;
+	width: 20%; border-style: solid; display: inline-block; float: left; 
 }
 
 aside div{
@@ -13,7 +13,11 @@ aside div{
 }
 
 .wrap22{
-	border-style: solid; width: 800px; display: inline-block; list-style: none; list-style-position: outside; height: auto;
+	border-style: solid; width: 70%; display: inline-block; list-style-position: outside; float: right; 
+}
+
+.listbook{
+	list-style: none;
 }
 
 .category{
@@ -21,24 +25,31 @@ aside div{
 }
 
 .subMenu{
-	font-size: 20px; margin-top: 30px
+	font-size: 20px; margin-top: 30px; text-decoration: none;
 }
 .subMenu div{
 	margin-top: 20px;
 }
 
 .horizontal{
-	width: 600px; margin-top: 50px; margin-bottom: 50px; border-top: 1px solid; padding: 20px;
+	width: 600px; margin-top: 50px; margin-bottom: 50px; border-top: 1px solid; padding: 20px; 
 }
 
 .bookimage {
-	display: inline-block; width: 268px; 
+	 width: 20%; display: inline-block; border: 1px solid;
 }
 
 .bookinfo {
-	width: 268px; display: inline-block; font-size: 15px; text-align: left; background: #fff url(images/box-bg.png) repeat-x 0 bottom;  border: 1px solid #e6e6e6; padding: 10px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; 
+	width: 30%; display: inline-block; font-size: 15px; text-align: left;  border: 1px solid #e6e6e6; padding: 10px; 
 }
+.quantity{
+	width: 10%; display: inline-block; border: 1px solid; color: red; text-align: center;
+}
+	
 
+.button{
+	width:20%; display: inline-block; border: 1px solid;
+}
 
 
 body, html { height: 100%; }
@@ -165,7 +176,7 @@ border-radius: 12px; -moz-border-radius: 12px; -webkit-border-radius: 12px; -o-b
 
 #wrapper { min-height: 100%; height: auto !important; height: 100%; margin: 0 auto -46px; }
 #footer, #footer-push { height: 46px; }
-#footer { background-color: #f1ecec; line-height: 46px; }
+#footer { background-color: #f1ecec; line-height: 46px; margin-top: 50px;}
 #footer p.copy { color: #c9c9c9; }
 #footer p.copy a { color: #afafaf; text-decoration: underline; }
 #footer p.copy a:hover { text-decoration: none; }

@@ -2,7 +2,8 @@ package com.ezen.book.controller;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,32 +11,40 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.ezen.book.domain.Book;
 import com.ezen.book.service.BookService;
 
-import jakarta.servlet.http.HttpServletRequest;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 @Controller
 public class BookController {
-	@Autowired
-	private BookService bookService;
+	
+	private final BookService bookService;
 	
 	@GetMapping("/main")
 	public String main() {
 		return "/main";
 	}
 	
-	// 베스트 신상품 통합
+	// best,new , 국내,해외 분류 전체 조회
 	@GetMapping("/getBookList")
 	public String getBookList(Model model, HttpServletRequest request, Book book) {
 		
-		String bookKind = request.getParameter("kind");
-		String bookType = request.getParameter("type");
+		Integer bookType = null;
 		
-		List<Book> bookList = bookService.getBookKindTypeList(bookKind, bookType);
+		String bookKind = request.getParameter("kind");
+		String type = request.getParameter("type");
+		
+		if(type != null) {
+			bookType = Integer.valueOf(type);
+		}
+		
+		List<Book> bookList = bookService.getBookList(bookKind, bookType);
 		
 		model.addAttribute("bookList",bookList);
 		
 		return "getBookList";
 	}
 	
+	//상세정보
 	@GetMapping("/getBook")
 	public String getBook(Book book, Model model) {
 		
@@ -43,4 +52,5 @@ public class BookController {
 		
 		return "getBook";
 	}
+	
 }
